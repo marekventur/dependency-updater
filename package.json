@@ -1,0 +1,41 @@
+{
+  "name": "dependency-updater",
+  "version": "0.0.1",
+  "description": "A tool that checks npm dependencies and sends a github pull request should updates be available",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "eslint lib test example.js",
+    "test": "mocha --recursive test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marekventur/dependency-updater.git"
+  },
+  "keywords": [
+    "npm",
+    "github",
+    "pr",
+    "package.json"
+  ],
+  "author": "Marek Ventur <marekventur@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marekventur/dependency-updater/issues"
+  },
+  "homepage": "https://github.com/marekventur/dependency-updater#readme",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "es6-promisify": "^3.0.0",
+    "github": "^0.2.4",
+    "underscore": "^1.8.3",
+    "yargs": "^3.29.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "eslint": "^1.9.0",
+    "mocha": "^2.3.3",
+    "tmp": "0.0.28"
+  }
+}
