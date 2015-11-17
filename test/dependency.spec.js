@@ -74,6 +74,16 @@ describe("Dependency", () => {
             });
         });
 
+        it("keeps ~ when suggesting new version", () => {
+            npmApi.view.returns(Promise.resolve([{versions: ["0.0.1", "2.0.1"]}]));
+
+            return dependency.checkForNewerVersion(null, log)
+            .then(d => {
+                expect(d.suggestedVersion).to.equal("~2.0.1");
+                expect(d.outdated).to.equal(true);
+            });
+        });
+
         it("uses provided version for outdated check, [current]", () => {
             npmApi.view.returns(Promise.resolve([{versions: ["0.0.1", "3.0.1"]}]));
 
