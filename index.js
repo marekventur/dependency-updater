@@ -53,17 +53,19 @@ if (argv.token) {
 // Process
 let Logbook = require("./lib/logbook");
 let processRepository = require("./lib/process_repository");
+let logger = console;
 
 let logbook = new Logbook(argv.logbook);
 logbook.load()
 .then(() => {
     return Promise.all(
-        argv._.map(repository => processRepository(repository, githubAuth, logbook))
-    );
+        argv._.map(repository => processRepository(repository, githubAuth, logbook, logger))
+    )
+    .then(d => console.log(d[0]));
 })
 .then(() => logbook.save(), err => { logbook.save(); throw err; })
 .catch(err => {
     console.error("ERROR:");
-    console.error(err);
+    console.error(err.stack || err);
     process.exit(1);
 });
