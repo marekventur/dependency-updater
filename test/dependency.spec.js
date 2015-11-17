@@ -83,5 +83,14 @@ describe("Dependency", () => {
                 expect(d.outdated).to.equal(true);
             });
         });
+
+        it("never update packages that have a slash in the name", () => {
+            dependency = new Dependency(githubRepositoryApi, npmApi, packageJson, type, name, "foo/bar");
+
+            return dependency.checkForNewerVersion(null, log)
+            .then(d => {
+                expect(d.outdated).to.equal(false);
+            });
+        });
     });
 });
