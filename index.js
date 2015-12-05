@@ -55,13 +55,21 @@ if (argv.token) {
 // Process
 let Logbook = require("./lib/logbook");
 let processRepository = require("./lib/process_repository");
+let GithubRepositoryApi = require("./lib/github_repository_api");
+let NpmApi = require("./lib/npm_api");
+let PullRequest = require("./lib/pull_request");
 let logger = console;
 
 let logbook = new Logbook(argv.logbook);
+
 logbook.load()
 .then(() => {
     return Promise.all(
-        argv._.map(repository => processRepository(repository, githubAuth, logbook, logger))
+        argv._.map(repositoryName => {
+            let githubRepositoryApi = new GithubRepositoryApi(githubAuth, repositoryName);
+            let npmApi = new NpmApi();
+            processRepository(repositoryName, githubAuth, logbook, logger, githubRepositoryApi, npmApi, PullRequest);
+        })
     )
 })
 .then(() => logbook.save(), err => { logbook.save(); throw err; })

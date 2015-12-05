@@ -32,7 +32,7 @@ describe("Repository", () => {
             paths: ["some/package.json", "other/package.json"]
         }
 
-        githubRepositoryApi.getContentJson.returns(Promise.resolve(config));
+        githubRepositoryApi.getContentJson.returns(Promise.resolve({content: config}));
 
         return repository.createPackages()
         .then(packages => {
@@ -57,7 +57,7 @@ describe("Repository", () => {
             paths: ["some/package.json", "other/package.json"]
         }
 
-        githubRepositoryApi.getContentJson.returns(Promise.resolve(config));
+        githubRepositoryApi.getContentJson.returns(Promise.resolve({content: config}));
 
         return repository.createPackages()
         .then(packages => {
@@ -71,7 +71,7 @@ describe("Repository", () => {
             paths: ["some/package.json", "other/package.json"]
         }
 
-        githubRepositoryApi.getContentJson.returns(Promise.resolve(config));
+        githubRepositoryApi.getContentJson.returns(Promise.resolve({content: config}));
 
         return repository.createPackages()
         .then(packages => {
