@@ -69,5 +69,4 @@ describe("Pull Request", () => {
             expect(logbook.get("reponame", "foo")).to.equal("~1.2.3");
         });
     });
-
 });
