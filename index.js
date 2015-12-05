@@ -63,7 +63,6 @@ logbook.load()
     return Promise.all(
         argv._.map(repository => processRepository(repository, githubAuth, logbook, logger))
     )
-    .then(d => console.log(d[0]));
 })
 .then(() => logbook.save(), err => { logbook.save(); throw err; })
 .catch(err => {
