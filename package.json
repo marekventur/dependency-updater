@@ -27,18 +27,18 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "es6-promisify": "^3.0.0",
-    "github": "^0.2.4",
-    "npm": "^3.4.0",
-    "semver": "^5.0.3",
-    "underscore": "^1.8.3",
-    "yargs": "^3.29.0"
+    "es6-promisify": "3.0.0",
+    "github": "0.2.4",
+    "npm": "3.5.2",
+    "semver": "5.0.3",
+    "underscore": "1.8.3",
+    "yargs": "3.29.0"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
-    "eslint": "^1.9.0",
-    "mocha": "^2.3.3",
-    "sinon": "^1.17.2",
+    "chai": "3.4.1",
+    "eslint": "1.9.0",
+    "mocha": "2.3.3",
+    "sinon": "1.17.2",
     "tmp": "0.0.28"
   }
 }
