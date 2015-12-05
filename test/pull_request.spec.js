@@ -16,7 +16,7 @@ describe("Pull Request", () => {
             getReference: sinon.stub().returns(Promise.resolve({ object: {sha: headSha}})),
             createReference: sinon.stub().returns(Promise.resolve()),
             updateFile: sinon.stub().returns(Promise.resolve()),
-            pullRequestCreate: sinon.stub().returns(Promise.resolve({ number: 4 })),
+            pullRequestCreate: sinon.stub().returns(Promise.resolve({ number: 4 }))
         };
 
         updatedDependencyContent = "{\"FOO\":\"BAR\"}";

@@ -16,5 +16,6 @@
         "no-trailing-spaces": [2],
         "max-statements": [2, 22],
         "complexity": [2, 8]
-    }
+    },
+    "extends": "eslint:recommended"
 }

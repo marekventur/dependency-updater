@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 "use strict";
 
+/*eslint-disable no-console*/
+
 let path = require("path");
 let _ = require("underscore");
 
@@ -69,3 +71,5 @@ logbook.load()
     console.error(err.stack || err);
     process.exit(1);
 });
+
+/*eslint-enable no-console*/

@@ -47,7 +47,7 @@ describe("Logbook", () => {
             let newLogbook = new Logbook(tempPath);
             return newLogbook.load();
         })
-        .then(newLogbook => {
+        .then(() => {
             assert.equal(logbook.get("repo", "foo"), "bar");
         })
     });
