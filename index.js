@@ -68,7 +68,7 @@ logbook.load()
         argv._.map(repositoryName => {
             let githubRepositoryApi = new GithubRepositoryApi(githubAuth, repositoryName);
             let npmApi = new NpmApi();
-            processRepository(repositoryName, githubAuth, logbook, logger, githubRepositoryApi, npmApi, PullRequest);
+            return processRepository(repositoryName, githubAuth, logbook, logger, githubRepositoryApi, npmApi, PullRequest);
         })
     )
 })
