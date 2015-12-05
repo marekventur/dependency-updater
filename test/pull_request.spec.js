@@ -62,11 +62,4 @@ describe("Pull Request", () => {
             expect(githubRepositoryApi.pullRequestCreate.args[0][0].title).to.equal("Update \"foo\" to version ~1.2.3");
         });
     });
-
-    it("stores update to logbook", () => {
-        return pullRequest.open(logger, logbook)
-        .then(() => {
-            expect(logbook.get("reponame", "foo")).to.equal("~1.2.3");
-        });
-    });
 });
