@@ -74,6 +74,16 @@ describe("Dependency", () => {
             });
         });
 
+        it("ignores alpha, beta and pre-releases", () => {
+            npmApi.view.returns(Promise.resolve([{versions: ["0.0.1", "2.0.1", "3.0.0-pre", "3.0.0-alpha", "3.0.0-beta"]}]));
+
+            return dependency.checkForNewerVersion("~2.0.1", log)
+            .then(d => {
+                expect(d.latestVersion).to.equal("2.0.1");
+                expect(d.outdated).to.equal(false);
+            });
+        });
+
         it("keeps ~ when suggesting new version", () => {
             npmApi.view.returns(Promise.resolve([{versions: ["0.0.1", "2.0.1"]}]));
 
