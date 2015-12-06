@@ -1,6 +1,6 @@
 {
   "name": "dependency-updater",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A tool that checks npm dependencies and sends a github pull request should updates be available",
   "main": "./index.js",
   "bin": {
