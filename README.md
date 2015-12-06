@@ -9,6 +9,8 @@ A simple bash script that checks out a list of github repositories, checks their
 
 Node 4.0.0 or more recent only, sorry.
 
+<img src="http://i.imgur.com/qaxh5gx.png" alt="Screenshot of PR with changelog in Github">
+
 ```bash
 $ npm install dependency-updater -g
 $ dependency-updater --username my-github-user --password my-github-password myname/myrepository anothername/another-repository
@@ -41,7 +43,7 @@ In case you have a package with more than one ```package.json``` (or just one, b
 
 ```json
 {
-    paths: ["folder/one/package.json", "folder/two/package.json"]
+    "paths": ["folder/one/package.json", "folder/two/package.json"]
 }
 ```
 
