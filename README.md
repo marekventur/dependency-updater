@@ -35,3 +35,9 @@ At least one of those credentials needs to be provided:
 * client id and secret
 
 The easiest way to create an oauth token for yourself is via <a href="https://github.com/settings/tokens/new">https://github.com/settings/tokens/new</a>. You only need "repo" and "public_repo" permissions
+
+# Notes
+If you want to clean up all "dependency-updater" branches you can use this command:
+```bash
+$ git branch -a | grep "dependency-updater" | cut -d / -f 3 | xargs -I BRANCH /bin/bash -c "git push origin --delete BRANCH"
+```
