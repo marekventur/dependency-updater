@@ -5,18 +5,20 @@ let expect = require("chai").expect;
 let assert = require("chai").assert;
 
 describe("githubRetryWrapper", () => {
-    let abuseError;
+    let abuseError, logger;
 
     beforeEach(() => {
         abuseError = new Error("You have triggered an abuse detection mechanism and have been temporarily blocked from content creation. Please retry your request again later.");
         abuseError.code = 403;
+
+        logger = { warn: () => {}};
 
         retryWrapper.RETRY_DELAY = 1;
         retryWrapper.RETRY_DELAY_MAX = 128;
     })
 
     it("passes normal response through", () => {
-        return retryWrapper(() => Promise.resolve("foobar"))
+        return retryWrapper(() => Promise.resolve("foobar"), logger)
         .then(response => {
             expect(response).to.equal("foobar");
         })
@@ -33,7 +35,7 @@ describe("githubRetryWrapper", () => {
             return Promise.reject(abuseError);
         }
 
-        return retryWrapper(() => foo())
+        return retryWrapper(() => foo(), logger)
         .then(response => {
             expect(response).to.equal("foobar");
         })
@@ -41,14 +43,14 @@ describe("githubRetryWrapper", () => {
 
     it("passes normal errors through", () => {
         let error = new Error("other");
-        return retryWrapper(() => Promise.reject(error))
+        return retryWrapper(() => Promise.reject(error), logger)
         .then(() => assert.fail(), err => {
             expect(err).to.equal(error);
         })
     });
 
     it("times out", () => {
-        return retryWrapper(() => Promise.reject(abuseError))
+        return retryWrapper(() => Promise.reject(abuseError), logger)
         .then(() => assert.fail(), err => {
             expect(err).to.equal(abuseError);
         })
