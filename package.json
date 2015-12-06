@@ -30,6 +30,7 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
+    "changelog": "^1.0.7",
     "es6-promisify": "3.0.0",
     "github": "0.2.4",
     "npm": "3.5.2",

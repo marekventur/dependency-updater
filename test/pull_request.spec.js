@@ -6,7 +6,7 @@ let expect = require("chai").expect;
 let sinon = require("sinon");
 
 describe("Pull Request", () => {
-    let pullRequest, githubRepositoryApi, dependency, logbook, packageJson, updatedDependencyContent, logger, headSha;
+    let pullRequest, githubRepositoryApi, dependency, logbook, packageJson, updatedDependencyContent, logger, headSha, changelogMarkdown;
 
     beforeEach(() => {
         headSha = "abcdef"
@@ -25,11 +25,14 @@ describe("Pull Request", () => {
             createVersionWithUpdatedDependency: sinon.stub().returns(updatedDependencyContent)
         };
 
+        changelogMarkdown = "FOOBAR";
+
         dependency = {
             name: "foo",
             suggestedVersion: "~1.2.3",
             type: "dependency",
-            packageJson
+            packageJson,
+            generateChangelog: () => Promise.resolve(changelogMarkdown)
         };
 
         logbook = new Logbook();
@@ -60,6 +63,13 @@ describe("Pull Request", () => {
         return pullRequest.open(logger, logbook)
         .then(() => {
             expect(githubRepositoryApi.pullRequestCreate.args[0][0].title).to.equal("Update \"foo\" to version ~1.2.3");
+        });
+    });
+
+    it("opens a PR with correct body", () => {
+        return pullRequest.open(logger, logbook)
+        .then(() => {
+            expect(githubRepositoryApi.pullRequestCreate.args[0][0].body).to.equal(changelogMarkdown);
         });
     });
 });

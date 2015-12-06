@@ -3,6 +3,7 @@
 let Dependency = require("../lib/dependency");
 let expect = require("chai").expect;
 let sinon = require("sinon");
+let _ = require("underscore");
 
 describe("Dependency", () => {
     let dependency, githubRepositoryApi, npmApi, packageJson, type, name, version;
@@ -113,4 +114,44 @@ describe("Dependency", () => {
             });
         });
     });
+
+    context("changelog", () => {
+        let changelog, changelogAsJson, changelogAsMarkdown;
+
+        beforeEach(() => {
+            npmApi.view.returns(Promise.resolve([{versions: ["0.0.1", "2.0.0"]}]));
+
+            changelogAsJson = {
+                "something": "here",
+                "versions": [
+                    { version: "0.0.1"},
+                    { version: "1.0.1"},
+                    { version: "1.0.2"},
+                    { version: "1.2.0"},
+                    { version: "1.2.1"},
+                    { version: "2.0.0"}
+                ]
+            };
+            changelogAsMarkdown = "FOOBAR";
+
+            changelog = {
+                generate: sinon.stub().withArgs("foo").returns(Promise.resolve(changelogAsJson)),
+                markdown: sinon.stub().returns(changelogAsMarkdown)
+            }
+        });
+
+        it("returns the correct markdown", () => {
+            return dependency.generateChangelog(changelog)
+            .then(markdown => {
+                expect(markdown).to.equal(changelogAsMarkdown);
+            })
+        });
+
+        it("filters irrelevant versions out", () => {
+            return dependency.generateChangelog(changelog)
+            .then(() => {
+                expect(_.pluck(changelog.markdown.args[0][0].versions, "version")).to.deep.equal(["1.2.0", "1.2.1", "2.0.0"]);
+            })
+        });
+    })
 });
