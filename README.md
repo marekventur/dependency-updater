@@ -36,6 +36,15 @@ At least one of those credentials needs to be provided:
 
 The easiest way to create an oauth token for yourself is via <a href="https://github.com/settings/tokens/new">https://github.com/settings/tokens/new</a>. You only need "repo" and "public_repo" permissions
 
+# Multiple package.json per repository
+In case you have a package with more than one ```package.json``` (or just one, but in a different location) you can add a file called ```.dependency-updater.json``` to the root of your repository:
+
+```json
+{
+    paths: ["folder/one/package.json", "folder/two/package.json"]
+}
+```
+
 # Notes
 If you want to clean up all "dependency-updater" branches you can use this command:
 ```bash
