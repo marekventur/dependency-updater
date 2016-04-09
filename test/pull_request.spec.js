@@ -69,7 +69,7 @@ describe("Pull Request", () => {
     it("opens a PR with correct body", () => {
         return pullRequest.open(logger, logbook)
         .then(() => {
-            expect(githubRepositoryApi.pullRequestCreate.args[0][0].body).to.equal(changelogMarkdown);
+            expect(githubRepositoryApi.pullRequestCreate.args[0][0].body).to.equal("<pre>" + changelogMarkdown + "</pre>");
         });
     });
 });
