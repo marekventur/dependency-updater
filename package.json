@@ -41,7 +41,7 @@
   "devDependencies": {
     "chai": "3.5.0",
     "eslint": "2.9.0",
-    "mocha": "2.4.5",
+    "mocha": "2.5.2",
     "sinon": "1.17.4",
     "tmp": "0.0.28"
   }
