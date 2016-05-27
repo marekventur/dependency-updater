@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "changelog": "^1.0.7",
-    "es6-promisify": "4.0.0",
+    "es6-promisify": "4.1.0",
     "github": "0.2.4",
     "npm": "3.9.3",
     "semver": "5.1.0",
