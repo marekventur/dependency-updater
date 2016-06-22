@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "eslint": "2.13.0",
+    "eslint": "2.13.1",
     "mocha": "2.5.3",
     "sinon": "1.17.4",
     "tmp": "0.0.28"
