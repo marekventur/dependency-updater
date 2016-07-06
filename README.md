@@ -5,7 +5,7 @@
 [![devDependency Status](https://david-dm.org/marekventur/dependency-updater/dev-status.svg)](https://david-dm.org/marekventur/dependency-updater#info=devDependencies)
 
 
-A simple bash script that checks out a list of github repositories, checks their package.json and sends a PR for every minor or major version update available. Your build server will check whether everything is alright and all you have to do is merge green PRs. For added ease of use just set it up as a cron job or as a daily task on your build server.
+A simple shell script that checks out a list of github repositories, checks their package.json and sends a PR for every minor or major version update available. Your build server will check whether everything is alright and all you have to do is merge green PRs. For added ease of use just set it up as a cron job or as a daily task on your build server.
 
 Node 4.0.0 or more recent only, sorry.
 
