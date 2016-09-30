@@ -36,7 +36,7 @@
     "npm": "3.10.8",
     "semver": "5.3.0",
     "underscore": "1.8.3",
-    "yargs": "5.0.0"
+    "yargs": "6.0.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
