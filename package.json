@@ -32,7 +32,7 @@
   "dependencies": {
     "changelog": "^1.0.7",
     "es6-promisify": "5.0.0",
-    "github": "3.1.1",
+    "github": "5.0.0",
     "npm": "3.10.8",
     "semver": "5.3.0",
     "underscore": "1.8.3",
